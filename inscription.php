@@ -48,5 +48,5 @@ echo "lng: $lng";
   http_response_code(400);
   echo json_encode(['error' => 'Adresse manquante']);
   exit;
-}//mettre les infos dns la db et passer a l'etape suivante
+}//mettre les infos dns la db (vrai addresse lisible de tous et lat et lng une colone pour chacuns) et passer a l'etape suivante
 ?>
