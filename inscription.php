@@ -7,75 +7,46 @@
 </head>
 <body>
     <p>Adresse</p>
-    <input type="text" name="" id="numeroderue" placeholder="N° et rue">
-    <input type="text" name="" id="ligneadresseaditionelle" placeholder="Ligne d'adresse additionelle">
-    <input type="text" name="" id="ville" placeholder="Ville">
-    <input type="text" name="" id="pays" placeholder="Pays">
-    <input type="text" name="" id="codepostal" placeholder="Code Postal">
-    <button id="submit">Suivant</button>
+    <form method="post">
+      <input type="text" name="rue" id="rue" placeholder="Rue, ex: rue Paul Bert" require>
+      <input type="text" name="numeroderue" id="numeroderue" placeholder="numéro de domicile, ex: 2">
+      <!--<input type="text" name="" id="ligneadresseaditionelle" placeholder="Ligne d'adresse additionelle">-->
+      <input type="text" name="ville" id="ville" placeholder="Ville, ex: Paris">
+      <input type="text" name="pays" id="pays" placeholder="Pays, ex: France">
+      <input type="text" name="codepostal" id="codepostal" placeholder="Code Postal, ex: 75003">
+      <button id="submit">Suivant</button>
+    </form>
 </body>
 </html>
+<?php
+if($_POST["rue"]){
+$address = urlencode($_POST["numeroderue"] . " " . $_POST["rue"] . " " . $_POST["ville"] . " " . $_POST["codepostal"] . " " . $_POST["pays"]);
 
-<!--
+$url = "https://api.opencagedata.com/geocode/v1/json?q=".$address."&key=d21f378f6b4244798ecb561aa72ab9d2";
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Géocoder une adresse avec JavaScript</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <style>
-    #map {
-      height: 500px;
-      width: 100%;
-    }
-  </style>
-</head>
-<body>
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Accept: application/json'
+]);
+$response = curl_exec($ch);
 
-  <h2>Carte centrée sur une adresse</h2>
-  <div id="map"></div>
+if ($response === false) {
+    echo "<script>alert('Une erreur est survenue, veuillez réessayer ultérieurement')</script>";
+    curl_close($ch);
+    exit;
+}
 
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script>
-    const adresse = "131B Rue Paul Bert, Paron 89100, France";
+curl_close($ch);
+$data = json_decode($response, true);
 
-    // Encodage de l'adresse pour l'URL
-    const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(adresse)}`;
-
-    // Appel à l'API Nominatim pour géocoder
-    fetch(url, {
-      headers: {
-        'User-Agent': 'mon-app-js/1.0 (email@example.com)' // recommandé par Nominatim
-      }
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data && data.length > 0) {
-        const lat = parseFloat(data[0].lat);
-        const lon = parseFloat(data[0].lon);
-
-        // Initialiser la carte avec Leaflet
-        const map = L.map('map').setView([lat, lon], 15);
-
-        // Tuiles OpenStreetMap
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        // Ajouter un marqueur
-        const marker = L.marker([lat, lon]).addTo(map);
-        marker.bindPopup(`<b>Adresse géocodée :</b><br>${adresse}`).openPopup();
-      } else {
-        alert("Adresse non trouvée.");
-      }
-    })
-    .catch(error => {
-      console.error("Erreur lors du géocodage :", error);
-    });
-  </script>
-
-</body>
-</html>
-
--->
+$lat = $data['results'][0]['geometry']['lat'];
+$lng = $data['results'][0]['geometry']['lng'];
+echo "lat: $lat";
+echo "lng: $lng";
+}else{
+  http_response_code(400);
+  echo json_encode(['error' => 'Adresse manquante']);
+  exit;
+}//mettre les infos dns la db et passer a l'etape suivante
+?>
