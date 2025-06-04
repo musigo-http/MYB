@@ -11,6 +11,7 @@
       <input type="text" name="name" id="name" placeholder="Nom, ex: Dupont" require>
       <input type="text" name="firstname" id="firstname" placeholder="Prenom, ex: Mathieu" require>
       <input type="text" name="email" id="email" placeholder="Email, ex: mail@exemple.com" require>
+      <input type="password" name="password" id="password" placeholder="Mot de passe, ex: monSuper!M0td3passe" require>
       <input type="tel" name="numberphone" id="numberphone" placeholder="Numéro de telephone, ex: +33782421412" require>
       <p>Date de naissance</p>
       <input type="date" name="datedenaissance" id="datedenaissance" require>
@@ -75,11 +76,12 @@ echo "lng: $lng";
   echo json_encode(['error' => 'Adresse manquante']);
   exit;
 }//mettre les infos dns la db (vrai addresse lisible de tous et lat et lng une colone pour chacuns) et passer a l'etape suivante
+//faire des code de reduc a genre 1an 100% gratuit afin d'attirer les 1er clients
 try{
     $bdd = new PDO("mysql:host=localhost; unix_socket=/run/mysqld/mysqld.sock; dbname=bdd;", "root", "Mat.at89");
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $bdd->prepare("INSERT INTO utilisateurs (email, prenom, nom, adresse, numero_telephone, birthday, lat, lng)
-                           VALUES (:email, :prenom, :nom, :adresse, :numero_telephone, :birthday, :lat, :lng)");
+    $stmt = $bdd->prepare("INSERT INTO utilisateurs (email, prenom, nom, adresse, numero_telephone, birthday, lat, lng, password)
+                           VALUES (:email, :prenom, :nom, :adresse, :numero_telephone, :birthday, :lat, :lng, :password)");
 
     $stmt->execute([
       'email' => $_POST["email"],
@@ -89,13 +91,15 @@ try{
       'numero_telephone' => $_POST["numberphone"],
       'birthday' => $_POST["datedenaissance"],
       'lat' => $lng,
-      'lng' => $lat
+      'lng' => $lat,
+      'password' => password_hash($_POST["password"], PASSWORD_DEFAULT)
   ]);
+  $_SESSION["email"]=$_POST["email"];
 }
 catch(PDOException $e){
     echo "ERREUR : ".$e->getMessage();
 }
 
-header("Location: index.php");
+echo "<script>window.location.href = '/index.php'</script>"
 
 ?>
