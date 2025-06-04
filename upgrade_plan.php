@@ -1,13 +1,3 @@
-<?php
-session_start();
-
-if(!$_SESSION["email"]){
-    header("Location: /connexion.php");
-    exit;
-}elseif($_SESSION["plan"] == "None"){
-    header("Location: /plan.php");
-}
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,6 +6,6 @@ if(!$_SESSION["email"]){
     <title>Document</title>
 </head>
 <body>
-    
+    <input type="text" name="codepromo" id="codepromo">
 </body>
 </html>
