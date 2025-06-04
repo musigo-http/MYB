@@ -44,6 +44,7 @@
 </body>
 </html>
 <?php
+session_start();
 if($_POST["rue"]){
 $address = urlencode($_POST["numeroderue"] . " " . $_POST["rue"] . " " . $_POST["ville"] . " " . $_POST["codepostal"] . " " . $_POST["pays"]);
 
