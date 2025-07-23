@@ -25,7 +25,64 @@
             </div>
         </div>
         <form action="POST">
-            <p>et cc</p>
+            <div id="question1">
+                <div class="nom">
+                    <p>Nom *</p>
+                    <input type="text" name="nom" id="nom" placeholder="Nom, ex: Dupont" required>
+                </div>
+                <div class="prenom">
+                    <p>Prénom *</p>
+                    <input type="text" name="prenom" id="prenom" placeholder="Prénom, ex: Mathieu" required>
+                </div>
+            </div>
+            <div id="question2">
+                <p>Email *</p>
+                <input type="text" name="email" id="email" placeholder="Email, ex: mail@exemple.com" required>
+            </div>
+            <div id="question3">
+                <p>Mot de passe *</p>
+                <input type="password" name="password" id="password" placeholder="Mot de passe, ex: monSuper!M0td3passe" required>
+            </div>
+            <div id="question4">
+                <div class="numero">
+                    <p>Numéro de téléphone *</p>
+                    <input type="text" name="numero" id="numero" placeholder="Numéro de téléphone, ex: +33782141212" required>
+                </div>
+                <div class="date">
+                    <p>Date de naissance *</p>
+                    <input type="date" name="date" id="date" required>
+                </div>
+            </div>
+            <div id="question5">
+                <h2>Adresse (lieu de travail et de rencontres)</h2>
+            </div>
+            <div id="question6">
+                <div class="rue">
+                    <p>Rue *</p>
+                    <input type="text" name="rue" id="rue" placeholder="Rue, ex: Rue Paul Bert" required>
+                </div>
+                <div class="numero2rue">
+                    <p>Numéro *</p>
+                    <input type="text" name="numero2rue" id="numero2rue" placeholder="Numéro, ex: 2" required>
+                </div>
+            </div>
+            <div id="question7">
+                <div class="ville">
+                    <p>Ville *</p>
+                    <input type="text" name="ville" id="ville" placeholder="Ville, ex: Paris" required>
+                </div>
+                <div class="codepostal">
+                    <p>Code Postal *</p>
+                    <input type="text" name="codepostal" id="codepostal" placeholder="Code Postal, ex: 75003" required>
+                </div>
+                <div class="pays">
+                    <p>Pays *</p>
+                    <input type="text" name="pays" id="pays" placeholder="Pays, ex: France" required>
+                </div>
+            </div>
+            <div id="question8">
+                <button type="submit" id="next">Continuer</button>
+            </div>
         </form>
     </div>
     <script src="main.js"></script>
