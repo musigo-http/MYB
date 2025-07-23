@@ -1,1 +1,1 @@
-### Parrit's project MYB
+### MYB project
