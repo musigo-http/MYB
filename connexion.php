@@ -17,7 +17,7 @@
 <?php
 session_start();
 try{
-    $bdd = new PDO("mysql:host=musigo.duckdns.org; unix_socket=/run/mysqld/mysqld.sock; dbname=bdd;", "root", "Mat.at89");
+    $bdd = new PDO("mysql:host=musigo.duckdns.org; unix_socket=/run/mysqld/mysqld.sock; dbname=bdd;", "root", "");
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $bdd->prepare("SELECT * from utilisateurs where email=:email");
     $stmt->execute(['email' => $_POST["email"]]);

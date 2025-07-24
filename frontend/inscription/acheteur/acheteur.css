@@ -49,7 +49,7 @@ form{
 .backgroundblack{
     width: 25%;
     height: 100%;
-    background-color: black;
+    background-color: blue;
     border-radius: 50px;
     /*animation: 1s linear 1s slide-in;*/
 }
@@ -71,10 +71,11 @@ form{
 }
 .bas{
     position: absolute;
-    width: 100%;
+    width: 96%;
     height: 30%;
     top: 70%;
     left: 0;
+    margin-left: 4%;
 }
 
 .hauthaut{
@@ -82,11 +83,12 @@ form{
     top: 0;
     left: 0;
     height: 30%;
-    width: 100%;
+    width: 96%;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: start;
+    margin-left: 4%;
 }
 .hautbas{
     width: 100%;
@@ -103,6 +105,7 @@ form{
     top: 60%;
     font-size: smaller;
     left: 0;
+    margin-left: 4%;
 }
 #question1, #question2, #question3, #question4, #question6, #question7{
     width: 94%;

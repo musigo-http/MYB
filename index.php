@@ -2,7 +2,7 @@
 session_start();
 
 /*
-    $bdd = new PDO("mysql:host=musigo.duckdns.org; unix_socket=/run/mysqld/mysqld.sock; dbname=bdd;", "root", "Mat.at89");
+    $bdd = new PDO("mysql:host=musigo.duckdns.org; unix_socket=/run/mysqld/mysqld.sock; dbname=bdd;", "root", "");
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $bdd->prepare("INSERT INTO utilisateurs (email, prenom, nom, adresse, numero_telephone, birthday, lat, lng, password)
                            VALUES (:email, :prenom, :nom, :adresse, :numero_telephone, :birthday, :lat, :lng, :password)");
