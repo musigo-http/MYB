@@ -1,0 +1,166 @@
+html, body{
+    height: 99%;
+    width: 99%;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f6fd;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container{
+    background-color: white;
+    width: 35%;
+    height: 90%;
+    position: absolute;
+    border-radius: 10px;
+    border: 1px solid hsl(214.3 31.8% 91.4%);
+}
+.header{
+    position: absolute;
+    height: 30%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+}
+form{
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    height: 70%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.animation{
+    width: 90%;
+    height: 20%;
+    background-color: white;
+    border-radius: 50px;
+    background-color: #f0f6fd;
+    position: absolute;
+    top: 5%;
+}
+.backgroundblack{
+    width: 25%;
+    height: 100%;
+    background-color: blue;
+    border-radius: 50px;
+    /*animation: 1s linear 1s slide-in;*/
+}
+/*
+@keyframes slide-in {
+    from{
+        width: 25%;
+    }    
+    to{
+        width: 100%;
+    }
+}*/
+.haut{
+    width: 100%;
+    height: 70%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.bas{
+    position: absolute;
+    width: 96%;
+    height: 30%;
+    top: 70%;
+    left: 0;
+    margin-left: 4%;
+}
+
+.hauthaut{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30%;
+    width: 96%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: start;
+    margin-left: 4%;
+}
+.hautbas{
+    width: 100%;
+    height: 70%;
+    position: absolute;
+    top: 30%;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
+}
+#explicatif{
+    position: absolute;
+    top: 60%;
+    font-size: smaller;
+    left: 0;
+    margin-left: 4%;
+}
+#question1, #question2, #question3, #question4, #question6, #question7{
+    width: 94%;
+    display: flex;
+    justify-content: space-between;
+}
+.nom{
+    width: 60%;
+}
+.prenom{
+    width: 40%;
+}
+#nom, #prenom, #numero, #date, #rue, #numero2rue, #ville, #codepostal, #pays{
+    width: 90%;
+    height: 35%;
+    border-radius: 5px;
+    border: solid 1px grey;
+}
+#email, #password{
+    width: 60%;
+    height: 50%;
+    border-radius: 5px;
+    border: solid 1px grey;
+}
+#question2, #question3{
+    flex-direction: row;
+    align-items: end;
+}
+.numero{
+    width: 70%;
+}
+.date{
+    width: 30%;
+}
+.rue{
+    width: 30%;
+}
+.numero2rue{
+    width: 70%;
+}
+.ville, .codepostal, .pays{
+    width: 33.3%;
+}
+#question8{
+    width: 94%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+#next{
+    margin-top: 5%;
+    background: black;
+    color: white;
+    cursor: pointer;
+    width: 20%;
+    height: 60%;
+    border-radius: 20px;
+}
